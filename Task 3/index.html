@@ -1,0 +1,38 @@
+<?php
+    includes_once 'php.php';
+?>
+
+<!doctype html>
+<html>
+   <head>
+    <title>Comminiaction between ardino and website </title>
+    <script src='https://ajax.googleapis.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+   </head>
+
+   <body>
+    <h1>Comminiaction between get page and arduino</h1>
+    
+    <div id="sample">
+        <script>
+            var socket =io();
+            socket.on('data',function(data){
+                console.log(data);
+                documant.getElementsById('sample').innerHTML = data;
+            });
+
+        </script>
+
+        <?php
+            $sql ="SELECT * FROM users;";
+            $result = mysqli_query($conn,$sql);
+            $resultCheck = mysqli_num_rows($result);
+
+            if($resultCheck > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    ehco $row['arduinoID']."<br>";
+                }
+            }
+        ?>
+    </div>
+   </body>
+</html>
